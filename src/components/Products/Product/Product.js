@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
 
 root: {
     maxWidth: '100%',
-    height: '100%',
 },
 media: {
     height: 0,
@@ -33,6 +32,8 @@ cardContent: {
 
 const Product = ({ product, onAddToCart }) => {
   const classes = useStyles();
+
+  const handleAddToCart = () => onAddToCart(product.id, 1);
 
   return (
     <Card className={classes.root}>
@@ -62,7 +63,7 @@ const Product = ({ product, onAddToCart }) => {
       className={classes.cardActions}>
         <IconButton 
         aria-label="Add to Cart"
-        onClick={() => onAddToCart(product.id, 1)}>
+        onClick={handleAddToCart}>
           <AddShoppingCart />
         </IconButton>
       </CardActions>
