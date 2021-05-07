@@ -7,16 +7,17 @@ const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
+    padding: theme.spacing(6),
   },
   root: {
     flexGrow: 1,
+    
   },
 }));
 
 const Products = ({ products, onAddToCart }) => {
   const classes = useStyles();
+  if (!products.length) return <p>Loading...</p>;
   return (
     <main className={classes.content}>
       <div className={classes.toolbar} />

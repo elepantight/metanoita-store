@@ -1,0 +1,15 @@
+main {
+    background: linear-gradient(90deg, #87ceeb 0%, #87ebd6 30%, #e0e722 67%, #cfff04 100%);
+    background-size: 1000%;
+    animation: background 20s linear alternate infinite;
+
+}
+
+@keyframes background {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% 0;
+    }
+  }

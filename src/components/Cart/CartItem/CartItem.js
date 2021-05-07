@@ -12,7 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   media: {
-    height: 260,
+    height: 160,
   },
   cardContent: {
     display: "flex",
@@ -27,8 +27,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CartItem = ({ item, handleUpdateQty, handleRemoveFromCart }) => {
+const CartItem = ({ item, onUpdateCartQtn, onRemoveFromCart }) => {
   const classes = useStyles();
+
+  const handleUpdateCartQty = (lineItemId, newQuantity) =>
+    onUpdateCartQtn(lineItemId, newQuantity);
+
+  const handleRemoveFromCart = (lineItemId) => onRemoveFromCart(lineItemId);
   return (
     <Card>
       <CardMedia
@@ -44,25 +49,28 @@ const CartItem = ({ item, handleUpdateQty, handleRemoveFromCart }) => {
       </CardContent>
       <CardActions className={classes.cartActions}>
         <div className={classes.buttons}>
-          <Button 
-          type="button" 
-          size="small" 
-          onClick={() => handleUpdateQty(item.id, item.quantity - 1)}>
+          <Button
+            type="button"
+            size="small"
+            onClick={() => handleUpdateCartQty(item.id, item.quantity - 1)}
+          >
             -
           </Button>
           <Typography>{item.quantity}</Typography>
-          <Button 
-          type="button" 
-          size="small" 
-          onClick={() => handleUpdateQty(item.id, item.quantity + 1)}>
+          <Button
+            type="button"
+            size="small"
+            onClick={() => handleUpdateCartQty(item.id, item.quantity + 1)}
+          >
             +
           </Button>
         </div>
-        <Button 
-        variant="contained" 
-        type="button" 
-        color="secondary" 
-        onClick={() => handleRemoveFromCart(item.id)}>
+        <Button
+          variant="contained"
+          type="button"
+          color="secondary"
+          onClick={() => handleRemoveFromCart(item.id)}
+        >
           FjerN
         </Button>
       </CardActions>
